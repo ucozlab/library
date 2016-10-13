@@ -2,12 +2,37 @@
   "name": "library",
   "version": "1.0.0",
   "description": "Library with books (c) Artem L. 4 MoziDEV",
-  "main": "./dist/main.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "main": "./public/js/build.js",
+  "dependencies": {
+    "@types/angular-route": "^1.3.2",
+    "angular": "^1.5.8",
+    "angular-route": "^1.3.14",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.5.16",
+    "@types/node": "^6.0.45",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.9.0",
+    "typescript": "^2.0.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development webpack",
+    "prod": "NODE_ENV=production webpack",
+    "start": "NODE_ENV=development webpack-dev-server --content-base public/ --output-public-path=/js/"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ucozlab/library.git"
+  }
 }

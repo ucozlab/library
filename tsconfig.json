@@ -1,0 +1,26 @@
+{
+  "moduleResolution": "node",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "angular",
+      "angular-route",
+      "node"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]/*,
+  "files": [
+    "./src/ts/header/header.ts"
+  ],
+  "include": [
+    "./src/ts/header/header.ts"
+  ]*/
+}

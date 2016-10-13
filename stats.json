@@ -1,0 +1,337 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "1.13.2",
+  "hash": "90edf97755f384820e07",
+  "time": 622,
+  "publicPath": "",
+  "assetsByChunkName": {
+    "about": "build.js",
+    "home": "build.js"
+  },
+  "assets": [
+    {
+      "name": "build.js",
+      "size": 5365,
+      "chunks": [
+        0,
+        1
+      ],
+      "chunkNames": [
+        "about",
+        "home"
+      ],
+      "emitted": true
+    }
+  ],
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "extraAsync": false,
+      "size": 584,
+      "names": [
+        "about"
+      ],
+      "files": [
+        "build.js"
+      ],
+      "hash": "17ab838daa5bb8345e18",
+      "parents": [],
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/about.js",
+          "name": "./src/about.js",
+          "index": 0,
+          "index2": 1,
+          "size": 310,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": null,
+          "profile": {
+            "factory": 347,
+            "building": 200,
+            "dependencies": 6
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [],
+          "source": "/**\n * Created by user on 10.10.16.\n */\n'use strict';\n\nvar _welcome = require('./welcome');\n\nvar _welcome2 = _interopRequireDefault(_welcome);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _welcome2.default)('HOME');\n\nexports.welcome = _welcome2.default;"
+        },
+        {
+          "id": 1,
+          "identifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/welcome.js",
+          "name": "./src/welcome.js",
+          "index": 1,
+          "index2": 0,
+          "size": 274,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "assets": [],
+          "issuer": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+          "profile": {
+            "factory": 31,
+            "building": 31
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+              "module": "./src/main.js",
+              "moduleName": "./src/main.js",
+              "type": "cjs require",
+              "userRequest": "./welcome",
+              "loc": "7:15-35"
+            },
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/about.js",
+              "module": "./src/about.js",
+              "moduleName": "./src/about.js",
+              "type": "cjs require",
+              "userRequest": "./welcome",
+              "loc": "6:15-35"
+            }
+          ],
+          "source": "/**\n * Created by user on 10.10.16.\n */\n'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nexports.default = function (message) {\n\n    if (NODE_ENV == 'development') {\n        console.log('true');\n    }\n\n    alert('W3lcomr ' + message);\n};\n\n;"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/about.js",
+          "moduleIdentifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/about.js",
+          "moduleName": "./src/about.js",
+          "loc": "",
+          "name": "about",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "extraAsync": false,
+      "size": 585,
+      "names": [
+        "home"
+      ],
+      "files": [
+        "build.js"
+      ],
+      "hash": "da99acbdb25d1b33d194",
+      "parents": [],
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+          "name": "./src/main.js",
+          "index": 2,
+          "index2": 2,
+          "size": 311,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": null,
+          "profile": {
+            "factory": 27,
+            "building": 508
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [],
+          "source": "/**\n * Created by user on 10.10.16.\n */\n\n'use strict';\n\nvar _welcome = require('./welcome');\n\nvar _welcome2 = _interopRequireDefault(_welcome);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _welcome2.default)('HOME');\n\nexports.welcome = _welcome2.default;"
+        },
+        {
+          "id": 1,
+          "identifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/welcome.js",
+          "name": "./src/welcome.js",
+          "index": 1,
+          "index2": 0,
+          "size": 274,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "assets": [],
+          "issuer": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+          "profile": {
+            "factory": 31,
+            "building": 31
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+              "module": "./src/main.js",
+              "moduleName": "./src/main.js",
+              "type": "cjs require",
+              "userRequest": "./welcome",
+              "loc": "7:15-35"
+            },
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/about.js",
+              "module": "./src/about.js",
+              "moduleName": "./src/about.js",
+              "type": "cjs require",
+              "userRequest": "./welcome",
+              "loc": "6:15-35"
+            }
+          ],
+          "source": "/**\n * Created by user on 10.10.16.\n */\n'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nexports.default = function (message) {\n\n    if (NODE_ENV == 'development') {\n        console.log('true');\n    }\n\n    alert('W3lcomr ' + message);\n};\n\n;"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+          "moduleIdentifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+          "moduleName": "./src/main.js",
+          "loc": "",
+          "name": "home",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/about.js",
+      "name": "./src/about.js",
+      "index": 0,
+      "index2": 1,
+      "size": 310,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": null,
+      "profile": {
+        "factory": 347,
+        "building": 200,
+        "dependencies": 6
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [],
+      "source": "/**\n * Created by user on 10.10.16.\n */\n'use strict';\n\nvar _welcome = require('./welcome');\n\nvar _welcome2 = _interopRequireDefault(_welcome);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _welcome2.default)('HOME');\n\nexports.welcome = _welcome2.default;"
+    },
+    {
+      "id": 0,
+      "identifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+      "name": "./src/main.js",
+      "index": 2,
+      "index2": 2,
+      "size": 311,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": null,
+      "profile": {
+        "factory": 27,
+        "building": 508
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [],
+      "source": "/**\n * Created by user on 10.10.16.\n */\n\n'use strict';\n\nvar _welcome = require('./welcome');\n\nvar _welcome2 = _interopRequireDefault(_welcome);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _welcome2.default)('HOME');\n\nexports.welcome = _welcome2.default;"
+    },
+    {
+      "id": 1,
+      "identifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/welcome.js",
+      "name": "./src/welcome.js",
+      "index": 1,
+      "index2": 0,
+      "size": 274,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "assets": [],
+      "issuer": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+      "profile": {
+        "factory": 31,
+        "building": 31
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/main.js",
+          "module": "./src/main.js",
+          "moduleName": "./src/main.js",
+          "type": "cjs require",
+          "userRequest": "./welcome",
+          "loc": "7:15-35"
+        },
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/home/user/Dropbox/projects/library/node_modules/babel-loader/index.js?presets[]=es2015!/home/user/Dropbox/projects/library/src/about.js",
+          "module": "./src/about.js",
+          "moduleName": "./src/about.js",
+          "type": "cjs require",
+          "userRequest": "./welcome",
+          "loc": "6:15-35"
+        }
+      ],
+      "source": "/**\n * Created by user on 10.10.16.\n */\n'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nexports.default = function (message) {\n\n    if (NODE_ENV == 'development') {\n        console.log('true');\n    }\n\n    alert('W3lcomr ' + message);\n};\n\n;"
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}
