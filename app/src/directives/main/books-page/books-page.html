@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-4"><img class="img-responsive" src="{{book.image}}" alt="{{book.title}}"></div>
+	<div class="col-md-8">
+		<h1>{{book.title}}</h1>
+		<hr>
+		<p><strong>Author:</strong> {{book.author}}</p>
+		<p><strong>Price:</strong> {{book.price}}</p>
+		<p><strong>pageCount:</strong> {{book.pageCount}}</p>
+		<p><strong>isAvailable:</strong> {{book.isAvailable}}</p>
+		<p><strong>rating:</strong> {{book.rating}}</p>
+		<p><strong>ordered:</strong> {{book.ordered}}</p>
+		<p><button class="btn btn-primary btn-lg btn-success">Order book</button></p>
+	</div>
+</div>
+<hr>
+<p>{{book.description}}</p>
+<hr>
+<reviews ng-init="init(book.reviews)"></reviews>

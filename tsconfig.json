@@ -18,9 +18,9 @@
     "node_modules"
   ]/*,
   "files": [
-    "./src/ts/header/header.ts"
+    "./src/directives/header/header.directives"
   ],
   "include": [
-    "./src/ts/header/header.ts"
+    "./src/directives/header/header.directives"
   ]*/
 }

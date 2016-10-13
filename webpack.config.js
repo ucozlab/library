@@ -1,5 +1,7 @@
 'use strict';
 
+var path = require('path');
+
 const
     NODE_ENV = process.env.NODE_ENV || 'development',
     webpack  = require('webpack');
@@ -7,14 +9,14 @@ const
 module.exports = {
     context: __dirname,
     entry: {
-        main : "./src/ts/main",
-        //header : "./src/ts/header/header",
+        main : "./app/src/app",
+        //header : "./src/directives/header/header",
         //styles: "./src/less/main"
     },
 
     output: {
-        path: __dirname + "/public/js/",  // собираем весь джс в один файл
-        //publicPath: "/public/",  //
+        path: __dirname + "/app/assets/js/",  // собираем весь джс в один файл
+        //publicPath: "/assets/",  //
         filename: "build.js",   // можно "[name].js", тогда каждый файл будет отдельно собираться
         library: 'home' // название глобальной переменной для тестов, // можно "[name]"
     },
@@ -48,7 +50,7 @@ module.exports = {
         loaders: [
             {   // Typescript
                 test: /\.ts?$/,
-                include: __dirname + "/src/ts/",  // включаем только папку src
+                include: __dirname + "/app/src/",  // включаем только папку src
                 exclude: /(node_modules|bower_components)/, //выключаем не нужные
                 loader: 'ts-loader'
             },
@@ -59,7 +61,7 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                include: __dirname + "/src/less/",
+                include: __dirname + "/app/assets/less/",
                 exclude: /(node_modules|bower_components)/, //выключаем не нужные
                 loader: "style!css!less"
             },
@@ -86,3 +88,5 @@ if (NODE_ENV == 'production') {     // минифай
         })
     )
 }
+
+console.log(__dirname);
