@@ -9,7 +9,7 @@ const
 module.exports = {
     context: __dirname,
     entry: {
-        main : "./app/src/app",
+        main : "./app/src/app"
         //header : "./src/directives/header/header",
         //styles: "./src/less/main"
     },
@@ -75,7 +75,7 @@ module.exports = {
             { test: /\.coffee$/, loader: "coffee-hint-loader" }
         ]*/
     }
-}
+};
 
 if (NODE_ENV == 'production') {     // минифай
     module.exports.plugins.push(

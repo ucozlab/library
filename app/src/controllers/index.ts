@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import * as angular from "angular";
+import * as angular from 'angular';
 
 let libraryApp = angular.module('libraryApp');
 
@@ -69,9 +69,24 @@ libraryApp.controller('booksList', function ($scope) {
 	$scope.bookslist = books;
 });
 
-libraryApp.controller('booksPage', function ($scope,$routeParams) {
+libraryApp.controller('booksPage', function ($scope,$routeParams,$http,$httpProvider) {
 	let id = $routeParams.bookId;
 	$scope.book = books[id];
+
+	$scope.orderBook = () => {
+		//books[id].isAvailable ? sendOrder($event) : rejectOrder()
+
+		let data = 5;
+		$http.post('http://localhost:8080/#/book/0', data).then(()=>{
+			alert('success');
+			$scope.hello = data;
+		}, () => alert('Oops'));
+	}
+
+});
+
+libraryApp.controller('orderBook', function ($scope) {
+
 });
 
 
