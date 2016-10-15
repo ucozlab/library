@@ -1,7 +1,5 @@
 'use strict';
 
-var path = require('path');
-
 const
     NODE_ENV = process.env.NODE_ENV || 'development',
     webpack  = require('webpack');
@@ -15,10 +13,15 @@ module.exports = {
     },
 
     output: {
-        path: __dirname + "/app/assets/js/",  // собираем весь джс в один файл
-        //publicPath: "/assets/",  //
+        path: __dirname + "/app/assets/js",  // собираем весь джс в один файл
+        //publicPath: "/app/",  //
         filename: "build.js",   // можно "[name].js", тогда каждый файл будет отдельно собираться
         library: 'home' // название глобальной переменной для тестов, // можно "[name]"
+    },
+    devServer: {
+        host: 'localhost', //default
+        port: 8080,
+        contentBase: __dirname + "/app"
     },
     watch: NODE_ENV == 'development',   //смотрим только за продакшеном
     watchOptions: {
@@ -66,9 +69,9 @@ module.exports = {
                 loader: "style!css!less"
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
                 include: __dirname + "/node_modules/bootstrap/dist/fonts/",  // включаем только папку bootstrap
-                loader: "file"
+                loader: "file?pubicPath=../&name=../fonts/[hash].[ext]"
             }
         ]/*,
         preLoaders: [

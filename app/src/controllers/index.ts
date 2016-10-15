@@ -1,7 +1,3 @@
-/**
- * Created by user on 13.10.16.
- */
-'use strict';
 
 import * as angular from 'angular';
 
@@ -69,15 +65,15 @@ libraryApp.controller('booksList', function ($scope) {
 	$scope.bookslist = books;
 });
 
-libraryApp.controller('booksPage', function ($scope,$routeParams,$http,$httpProvider) {
+libraryApp.controller('booksPage', function ($scope,$routeParams,$http) {
 	let id = $routeParams.bookId;
 	$scope.book = books[id];
 
 	$scope.orderBook = () => {
 		//books[id].isAvailable ? sendOrder($event) : rejectOrder()
 
-		let data = 5;
-		$http.post('http://localhost:8080/#/book/0', data).then(()=>{
+		var data = 5;
+		$http.post('/', data).then(()=>{
 			alert('success');
 			$scope.hello = data;
 		}, () => alert('Oops'));

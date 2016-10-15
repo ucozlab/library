@@ -1,7 +1,4 @@
-/**
- * Created by user on 13.10.16.
- */
-'use strict';
+"use strict";
 var angular = require('angular');
 var libraryApp = angular.module('libraryApp');
 //localStorage.setItem("books", JSON.stringify(books));
@@ -63,13 +60,13 @@ var books = [
 libraryApp.controller('booksList', function ($scope) {
     $scope.bookslist = books;
 });
-libraryApp.controller('booksPage', function ($scope, $routeParams, $http, $httpProvider) {
+libraryApp.controller('booksPage', function ($scope, $routeParams, $http) {
     var id = $routeParams.bookId;
     $scope.book = books[id];
     $scope.orderBook = function () {
         //books[id].isAvailable ? sendOrder($event) : rejectOrder()
         var data = 5;
-        $http.post('http://localhost:8080/#/book/0', data).then(function () {
+        $http.post('/', data).then(function () {
             alert('success');
             $scope.hello = data;
         }, function () { return alert('Oops'); });

@@ -5,7 +5,7 @@ import * as angular from "angular";
 import "angular-route";
 var libraryApp = angular.module('libraryApp', ['ngRoute']);
 
-libraryApp.config(function($routeProvider) {
+libraryApp.config(function($routeProvider,$httpProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl: 'src/directives/main/books-list/books-list.html',
@@ -16,4 +16,5 @@ libraryApp.config(function($routeProvider) {
 			controller: 'booksPage'
 		})
 		.otherwise('/');
+	$httpProvider.interceptors.push('myInterceptor');
 });

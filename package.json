@@ -9,8 +9,8 @@
     "bootstrap": "^3.3.7"
   },
   "devDependencies": {
-    "@types/angular-route": "^1.3.2",
     "@types/angular": "^1.5.16",
+    "@types/angular-route": "^1.3.2",
     "@types/node": "^6.0.45",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
@@ -20,6 +20,7 @@
     "style-loader": "^0.13.1",
     "ts-loader": "^0.9.0",
     "typescript": "^2.0.3",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   },
@@ -27,7 +28,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development webpack",
     "prod": "NODE_ENV=production webpack",
-    "start": "NODE_ENV=development webpack-dev-server --content-base app/ --output-public-path=/assets/js/"
+    "start": "NODE_ENV=development webpack-dev-server --output-public-path=/assets/js/ --content-base app/"
   },
   "author": "",
   "license": "ISC",
