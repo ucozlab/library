@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('reviews-directive',[]);
+	var app = angular.module('reviews',[]);
 	app.directive('reviews',function () {
 		return {
 			restrict: 'E',
@@ -15,8 +15,7 @@
 					$scope.review = {};
 				};
 			},
-			templateUrl: 'review.html'
+			templateUrl: 'src/directives/main/reviews/review.html'
 		}
 	});
 })();
-

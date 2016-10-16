@@ -6,10 +6,11 @@
 		<p><strong>Author:</strong> {{book.author}}</p>
 		<p><strong>Price:</strong> {{book.price}}</p>
 		<p><strong>pageCount:</strong> {{book.pageCount}}</p>
-		<p><strong>isAvailable:</strong> {{book.isAvailable}}</p>
+		<p><strong>isAvailable:</strong> <span ng-class="{'text-success': book.isAvailable, 'text-danger': !book.isAvailable}">{{book.isAvailable}}</span></p>
 		<p><strong>rating:</strong> {{book.rating}}</p>
-		<p><strong>ordered:</strong> {{book.ordered}}</p>
+		<p><strong>ordered:</strong> <span></span>{{book.ordered}}</p>
 		<p><button class="btn btn-primary btn-lg btn-success" ng-click="orderBook()">Order book</button></p>
+		<div ng-bind-html="ServerResponse"></div>
 	</div>
 </div>
 <hr>

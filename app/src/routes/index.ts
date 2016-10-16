@@ -3,7 +3,7 @@
  */
 import * as angular from "angular";
 import "angular-route";
-var libraryApp = angular.module('libraryApp', ['ngRoute']);
+var libraryApp = angular.module('libraryApp', ['ngRoute','pageAside','pageFooter','pageHeader','reviews']);
 
 libraryApp.config(function($routeProvider,$httpProvider) {
 	$routeProvider
@@ -15,6 +15,6 @@ libraryApp.config(function($routeProvider,$httpProvider) {
 			templateUrl: 'src/directives/main/books-page/books-page.html',
 			controller: 'booksPage'
 		})
-		.otherwise('/');
+		.otherwise('/#/');
 	$httpProvider.interceptors.push('myInterceptor');
 });
