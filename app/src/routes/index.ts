@@ -3,9 +3,21 @@
  */
 import * as angular from "angular";
 import "angular-route";
-var libraryApp = angular.module('libraryApp', ['ngRoute','pageAside','pageFooter','pageHeader','reviews']);
+import "angular-ui-bootstrap";
+import "angular-animate";
+
+var libraryApp = angular.module('libraryApp', [
+	'ngRoute',
+	'ui.bootstrap',
+	'pageAside',
+	'pageFooter',
+	'pageHeader',
+	'reviews',
+	'ngAnimate'
+]);
 
 libraryApp.config(function($routeProvider,$httpProvider) {
+
 	$routeProvider
 		.when('/', {
 			templateUrl: 'src/directives/main/books-list/books-list.html',
@@ -16,5 +28,7 @@ libraryApp.config(function($routeProvider,$httpProvider) {
 			controller: 'booksPage'
 		})
 		.otherwise('/#/');
+
 	$httpProvider.interceptors.push('myInterceptor');
+
 });

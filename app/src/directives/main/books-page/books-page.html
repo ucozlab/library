@@ -8,9 +8,10 @@
 		<p><strong>pageCount:</strong> {{book.pageCount}}</p>
 		<p><strong>isAvailable:</strong> <span ng-class="{'text-success': book.isAvailable, 'text-danger': !book.isAvailable}">{{book.isAvailable}}</span></p>
 		<p><strong>rating:</strong> {{book.rating}}</p>
-		<p><strong>ordered:</strong> <span></span>{{book.ordered}}</p>
+		<p><strong>ordered:</strong> <span></span>{{book.ordered.length}}</p>
 		<p><button class="btn btn-primary btn-lg btn-success" ng-click="orderBook()">Order book</button></p>
 		<div ng-bind-html="ServerResponse"></div>
+		<div>{{shipAdress}}</div>
 	</div>
 </div>
 <hr>

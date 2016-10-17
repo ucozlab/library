@@ -4,7 +4,11 @@
 'use strict';
 var angular = require("angular");
 var libraryApp = angular.module('libraryApp');
-libraryApp.factory('myInterceptor', function () {
+libraryApp
+    .factory('Application', function ($log) {
+    return {};
+})
+    .factory('myInterceptor', function (Application) {
     //$log.debug('$log используется чтобы показать что это стандартная фабрика, в которую можно инжектить сервисы');
     return {
         'request': function (config) {

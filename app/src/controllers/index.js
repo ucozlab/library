@@ -11,23 +11,27 @@ libraryApp.controller('booksList', function ($scope, $http) {
     $scope.getTotal = function () {
         var total = 0;
         for (var i = 0; i < $scope.bookslist.length; i++) {
-            total += $scope.bookslist[i].ordered;
+            total += $scope.bookslist[i].ordered.length;
         }
         return total;
     };
 });
-libraryApp.controller('booksPage', ['$scope', '$routeParams', '$http', '$sce', '$timeout', 'myInterceptor', function ($scope, $routeParams, $http, $sce, $timeout) {
-        var id = $routeParams.bookId;
+libraryApp.controller('booksPage', ['$scope', '$routeParams', '$http', '$sce', '$timeout', '$uibModal', 'myInterceptor', function ($scope, $routeParams, $http, $sce, $timeout, $uibModal) {
+        var id = $routeParams.bookId, $ctrl = this;
         $scope.book = {};
-        $http.get('src/model/books.json').then(function (response) {
+        $scope.shipAdress = '';
+        $http.get('src/model/books.json').then(
+        // перехватываем интерсептором
+        function (response) {
             $scope.book = response.data[id];
         }, function () { return alert('can\'t load data from server!'); });
         $scope.orderBook = function () {
-            $scope.book.isAvailable ? $scope.sendOrder() : $scope.rejectOrder();
+            $scope.book.isAvailable ? $scope.modalOpen() : $scope.rejectOrder();
         };
         $scope.sendOrder = function () {
             var data = Object.assign({}, $scope.book);
-            $http.post('src/model/books.json', data).then(function () {
+            $http.post('src/model/books.json', data).then(function (response) {
+                console.dir(response);
                 $scope.ServerResponse = $sce.trustAsHtml('<div class="alert alert-success" role="alert">\
 				<strong>Woohoo!</strong> Successfully ordered.\
 			</div>');
@@ -50,5 +54,40 @@ libraryApp.controller('booksPage', ['$scope', '$routeParams', '$http', '$sce', '
                 $scope.ServerResponse = $sce.trustAsHtml('<p></p>');
             }, 4000);
         };
+        $scope.modalOpen = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'myModalContent.html',
+                controller: 'ModalInstanceCtrl',
+                controllerAs: '$ctrl',
+                size: 'sm',
+                //			scope: $scope,
+                resolve: {
+                    title: function () {
+                        return $scope.book.title;
+                    }
+                }
+            });
+            modalInstance.result.then(function (inputData) {
+                $scope.book.shipAdress = inputData;
+                $scope.sendOrder();
+            }, function () {
+                //$log.info('Modal dismissed at: ' + new Date());
+            });
+        };
     }]);
+libraryApp.controller('ModalInstanceCtrl', function ($uibModalInstance, $scope) {
+    var $ctrl = this;
+    $scope.data = {
+        shipAdress: ''
+    };
+    $ctrl.ok = function () {
+        $uibModalInstance.close($scope.data.shipAdress);
+    };
+    $ctrl.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+});
 //# sourceMappingURL=index.js.map

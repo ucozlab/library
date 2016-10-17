@@ -4,7 +4,17 @@
  */
 var angular = require("angular");
 require("angular-route");
-var libraryApp = angular.module('libraryApp', ['ngRoute', 'pageAside', 'pageFooter', 'pageHeader', 'reviews']);
+require("angular-ui-bootstrap");
+require("angular-animate");
+var libraryApp = angular.module('libraryApp', [
+    'ngRoute',
+    'ui.bootstrap',
+    'pageAside',
+    'pageFooter',
+    'pageHeader',
+    'reviews',
+    'ngAnimate'
+]);
 libraryApp.config(function ($routeProvider, $httpProvider) {
     $routeProvider
         .when('/', {
