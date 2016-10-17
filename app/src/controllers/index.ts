@@ -29,7 +29,15 @@ libraryApp.controller('booksList', function ($scope,$http) {
 
 });
 
-libraryApp.controller('booksPage', ['$scope','$routeParams','$http','$sce','$timeout','$uibModal','myInterceptor', function ($scope,$routeParams,$http,$sce,$timeout,$uibModal) {
+libraryApp.controller('booksPage', [
+	'$scope',
+	'$routeParams',
+	'$http',
+	'$sce',
+	'$timeout',
+	'$uibModal',
+	'myInterceptor',
+	function ($scope,$routeParams,$http,$sce,$timeout,$uibModal) {
 
 	let id = $routeParams.bookId,
 		$ctrl = this;
@@ -41,30 +49,24 @@ libraryApp.controller('booksPage', ['$scope','$routeParams','$http','$sce','$tim
 		// перехватываем интерсептором
 		( response ) => {
 			$scope.book = response.data[id];
+			$scope.countRating();
 		},
 		() => alert('can\'t load data from server!')
 	);
 
-	$scope.orderBook = () => {
-		$scope.book.isAvailable ? $scope.modalOpen() : $scope.rejectOrder();
+	$scope.countRating = () => {
+		$scope.allRating = 0;
+		if ($scope.book.reviews && $scope.book.reviews.length) {
+			angular.forEach($scope.book.reviews, function (value) {
+				$scope.allRating += value.stars;
+			});
+			$scope.allRating = ($scope.allRating / $scope.book.reviews.length).toFixed(1);
+		}
+		return $scope.allRating;
 	};
 
-	$scope.sendOrder = () => {
-
-		let data = (<any>Object).assign({},$scope.book);
-
-		$http.post('src/model/books.json', data).then((response)=>{
-			console.dir(response);
-			$scope.ServerResponse = $sce.trustAsHtml('<div class="alert alert-success" role="alert">\
-				<strong>Woohoo!</strong> Successfully ordered.\
-			</div>');
-			$scope.book.ordered += 1;
-		}, () => {
-			$scope.ServerResponse = $sce.trustAsHtml('<div class="alert alert-danger" role="alert">\
-				<strong>Oops!</strong> can\'t post data to server!.\
-			</div>');
-		});
-		$scope.killTooltip();
+	$scope.orderBook = () => {
+		$scope.book.isAvailable ? $scope.modalOpen() : $scope.rejectOrder();
 	};
 
 	$scope.rejectOrder = () => {
@@ -72,12 +74,6 @@ libraryApp.controller('booksPage', ['$scope','$routeParams','$http','$sce','$tim
 				Sorry, this book isn\'t available\
 			</div>');
 		$scope.killTooltip();
-	};
-
-	$scope.killTooltip  = () => {
-		$timeout(() => {
-			$scope.ServerResponse = $sce.trustAsHtml('<p></p>');
-		},4000);
 	};
 
 	$scope.modalOpen = () => {
@@ -89,7 +85,6 @@ libraryApp.controller('booksPage', ['$scope','$routeParams','$http','$sce','$tim
 			controller: 'ModalInstanceCtrl',
 			controllerAs: '$ctrl',
 			size: 'sm',
-//			scope: $scope,
 			resolve: {
 				title: function () {
 					return $scope.book.title
@@ -104,6 +99,32 @@ libraryApp.controller('booksPage', ['$scope','$routeParams','$http','$sce','$tim
 			//$log.info('Modal dismissed at: ' + new Date());
 		});
 	};
+
+	$scope.sendOrder = () => {
+
+		let data = (<any>Object).assign({},$scope.book);
+
+		$http.post('src/model/books.json', data).then((response)=>{
+			$scope.ServerResponse = $sce.trustAsHtml('<div class="alert alert-success" role="alert">\
+				<strong>Woohoo!</strong> Successfully ordered.\
+			</div>');
+			$scope.book.ordered.length += 1;
+			//$rootScope.$emit("CallParentMethod", {});
+		}, () => {
+			$scope.ServerResponse = $sce.trustAsHtml('<div class="alert alert-danger" role="alert">\
+				<strong>Oops!</strong> can\'t post data to server!.\
+			</div>');
+		});
+		$scope.killTooltip();
+	};
+
+	$scope.killTooltip  = () => {
+		$timeout(() => {
+			$scope.ServerResponse = $sce.trustAsHtml('<p></p>');
+		},4000);
+	};
+
+
 
 }]);
 

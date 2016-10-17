@@ -20,11 +20,11 @@ libraryApp.config(function($routeProvider,$httpProvider) {
 
 	$routeProvider
 		.when('/', {
-			templateUrl: 'src/directives/main/books-list/books-list.html',
+			templateUrl: 'src/templates/books-list.html',
 			controller: 'booksList'
 		})
 		.when('/book/:bookId', {
-			templateUrl: 'src/directives/main/books-page/books-page.html',
+			templateUrl: 'src/templates/books-page.html',
 			controller: 'booksPage'
 		})
 		.otherwise('/#/');
