@@ -33,11 +33,10 @@ libraryApp.controller('booksPage', [
 	'$scope',
 	'$routeParams',
 	'$http',
-	'$sce',
 	'$timeout',
 	'$uibModal',
-	'myInterceptor',
-	function ($scope,$routeParams,$http,$sce,$timeout,$uibModal) {
+	'tooltip',
+	function ($scope,$routeParams,$http,$timeout,$uibModal,tooltip) {
 
 	let id = $routeParams.bookId,
 		$ctrl = this;
@@ -70,10 +69,10 @@ libraryApp.controller('booksPage', [
 	};
 
 	$scope.rejectOrder = () => {
-		$scope.ServerResponse = $sce.trustAsHtml('<div class="alert alert-info" role="alert">\
-				Sorry, this book isn\'t available\
-			</div>');
-		$scope.killTooltip();
+		$scope.ServerResponse = tooltip.unAvailable();
+		$timeout(() => {
+			$scope.ServerResponse = tooltip.remove();
+		},4000);
 	};
 
 	$scope.modalOpen = () => {
@@ -104,27 +103,20 @@ libraryApp.controller('booksPage', [
 
 		let data = (<any>Object).assign({},$scope.book);
 
-		$http.post('src/model/books.json', data).then((response)=>{
-			$scope.ServerResponse = $sce.trustAsHtml('<div class="alert alert-success" role="alert">\
-				<strong>Woohoo!</strong> Successfully ordered.\
-			</div>');
-			$scope.book.ordered.length += 1;
-			//$rootScope.$emit("CallParentMethod", {});
-		}, () => {
-			$scope.ServerResponse = $sce.trustAsHtml('<div class="alert alert-danger" role="alert">\
-				<strong>Oops!</strong> can\'t post data to server!.\
-			</div>');
-		});
-		$scope.killTooltip();
-	};
+		$http.post('src/model/books.json', data).then( (response) => {
 
-	$scope.killTooltip  = () => {
+			$scope.ServerResponse = tooltip.ordered();
+			$scope.book.ordered.length += 1;
+
+			//$rootScope.$emit("CallParentMethod", {});
+
+		}, () => {
+			$scope.ServerResponse = tooltip.fail();
+		});
 		$timeout(() => {
-			$scope.ServerResponse = $sce.trustAsHtml('<p></p>');
+			$scope.ServerResponse = tooltip.remove();
 		},4000);
 	};
-
-
 
 }]);
 

@@ -1,46 +1,50 @@
+/**
+ * @param {{some_unres_var:string}} data
+ */
 (function() {
 	var app = angular.module('reviews',[]);
-	app.directive('reviews',function ($http,$sce) {
+	app.directive('reviews',function ($http) {
 		return {
 			restrict: 'E',
-			controller: function ($scope) {
+			scope: {
+				siteModule: '='
+			},
+			bindToController: true,
+			controllerAs: '$ctrl',
+			controller: function ($scope,$timeout,tooltip) {
+
+				var $ctrl = this;
 
 				$scope.review = {};
 
-				$scope.init = function(name, id) {
-					//This function is sort of private constructor for controller
-					$scope.ids = id;
-					$scope.names = name;
-					//Based on passed argument you can make a call to resource
-					//and initialize more objects
-					//$resource.getMeBond(007)
-				};
-
-				$scope.addReview = function(book,reviewForm){
+				$scope.addReview = function(reviewForm){
 
 					this.review.createdOn = Date.now();
 
-					let id = $scope.book.id,
+					let pageId = $ctrl.siteModule.id,
+						moduleName = $ctrl.siteModule.moduleName,
 						data = {
-							pageId : id,
+							moduleName: moduleName,
+							pageId : pageId,
 							review : this.review
-						},
-						success = '<div class="alert alert-success" role="alert"><strong>Woohoo!</strong> Successfully added.</div>',
-						fail	= '<div class="alert alert-danger" role="alert"><strong>Oops!</strong> can\'t post data to server!.</div>';
+						};
 
-					$http.post(`/books/${id}/postreview`, data).then(
+					$http.post(`/${moduleName}/${pageId}/postreview`, data).then(
 						() => {
-							$scope.book.reviews.push(this.review);
+							$ctrl.siteModule.reviews.push(this.review);
 							$scope.review = {};
 							reviewForm.$setPristine();
-							$scope.ServerResponse = $sce.trustAsHtml(success);
-							$scope.countRating();
+							$scope.ServerResponse = tooltip.success();
+							typeof $scope.$parent.countRating === 'function' && $scope.$parent.countRating();
+
 						},
 						() => {
-						$scope.ServerResponse = $sce.trustAsHtml(fail);
+						$scope.ServerResponse = tooltip.fail();
 					});
 
-					$scope.killTooltip();
+					$timeout(() => {
+						$scope.ServerResponse = tooltip.remove();
+					},4000);
 
 				};
 

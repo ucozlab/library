@@ -5,6 +5,7 @@
 let defaultStorage = [
 	{
 		"id": 0,
+		"moduleName": "books",
 		"title": "Empire of the Sun",
 		"author": "J. G. Ballard",
 		"image": "https://images-na.ssl-images-amazon.com/images/I/51bDdAkWnPL._SX324_BO1,204,203,200_.jpg",
@@ -31,6 +32,7 @@ let defaultStorage = [
 	},
 	{
 		"id": 1,
+		"moduleName": "books",
 		"title": "The Lord of the Rings (7 book)",
 		"author": "J.R.R. Tolkien",
 		"image": "https://images-na.ssl-images-amazon.com/images/I/31aaOSA4JlL._BO1,204,203,200_.jpg",
@@ -44,6 +46,7 @@ let defaultStorage = [
 	},
 	{
 		"id": 2,
+		"moduleName": "books",
 		"title": "The Drowned World",
 		"author": "J. G. Ballard",
 		"image": "https://images-na.ssl-images-amazon.com/images/I/51e-SIgMloL._SX322_BO1,204,203,200_.jpg",
@@ -80,9 +83,9 @@ let buyBookInLocalStorage = (data) => {
 
 let addNewComment = (data) => {
 
-	let storedBooks = getBooks();
-	storedBooks[data.pageId].reviews.push(data.review);
-	localStorage.setItem("books", JSON.stringify(storedBooks));
+	let storedData = JSON.parse(localStorage.getItem(data.moduleName));
+	storedData[data.pageId].reviews.push(data.review);
+	localStorage.setItem(data.moduleName, JSON.stringify(storedData));
 
 };
 

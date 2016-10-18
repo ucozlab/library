@@ -1,8 +1,7 @@
 <!--  Review Form -->
-{{names}}
 <div class="well">
 	<h4>Leave a Comment:</h4>
-	<form role="form" name="reviewForm" ng-submit="reviewForm.$valid && addReview(book,reviewForm)" novalidate>
+	<form role="form" name="reviewForm" ng-submit="reviewForm.$valid && addReview(reviewForm)" novalidate>
 		<fieldset class="form-group">
 			<input ng-model="review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required />
 		</fieldset>
@@ -21,11 +20,10 @@
 	<div ng-bind-html="ServerResponse"></div>
 </div>
 <hr>
-
 <!-- Comments -->
 <ul class="list-unstyled">
 	<h3>Reviews</h3>
-	<li ng-repeat="review in book.reviews | orderBy:'createdOn':true">
+	<li ng-repeat="review in $ctrl.siteModule.reviews | orderBy:'createdOn':true">
 		<blockquote>
 			<strong>{{review.stars}} Stars</strong>
 			{{review.body}}

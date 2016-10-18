@@ -9,10 +9,33 @@ import { getLocalStorage, buyBookInLocalStorage, addNewComment } from '../model/
 let libraryApp = angular.module('libraryApp');
 
 libraryApp
-	.factory('Application', function($log) {
-		return {};
+	.factory('tooltip', function($timeout,$sce) {
+		let fail    	= '<div class="alert alert-danger" role="alert"><strong>Oops!</strong> can\'t post data to server!.</div>',
+			success 	= '<div class="alert alert-success" role="alert"><strong>Woohoo!</strong> Successfully added.</div>',
+			unAvailable = '<div class="alert alert-info" role="alert">Sorry, this book isn\'t available</div>',
+			ordered		= '<div class="alert alert-success" role="alert"><strong>Woohoo!</strong> Successfully ordered.</div>';
+		return {
+			create(){
+				return alert();
+			},
+			unAvailable(){
+				return $sce.trustAsHtml(unAvailable);
+			},
+			ordered(){
+				return $sce.trustAsHtml(ordered);
+			},
+			fail(){
+				return $sce.trustAsHtml(fail);
+			},
+			success(){
+				return $sce.trustAsHtml(success);
+			},
+			remove() {
+				return $sce.trustAsHtml('<p></p>');
+			}
+		};
 	})
-	.factory('myInterceptor', (Application) => {
+	.factory('myInterceptor', () => {
 		//$log.debug('$log используется чтобы показать что это стандартная фабрика, в которую можно инжектить сервисы');
 		return {
 			'request': function(config) {
