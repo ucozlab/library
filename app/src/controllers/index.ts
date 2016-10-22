@@ -101,7 +101,7 @@ libraryApp.controller('booksPage', [
 
 	$scope.sendOrder = () => {
 
-		let data = (<any>Object).assign({},$scope.book);
+		let data = $scope.book;
 
 		$http.post('src/model/books.json', data).then( (response) => {
 

@@ -3,7 +3,6 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "sourceMap": true,
     "moduleResolution": "node",
     "typeRoots": [
       "./node_modules/@types"
@@ -16,11 +15,5 @@
   },
   "exclude": [
     "node_modules"
-  ]/*,
-  "files": [
-    "./src/directives/header/header.directives"
-  ],
-  "include": [
-    "./src/directives/header/header.directives"
-  ]*/
+  ]
 }

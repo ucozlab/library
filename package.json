@@ -14,6 +14,7 @@
     "@types/angular": "^1.5.16",
     "@types/angular-route": "^1.3.2",
     "@types/node": "^6.0.45",
+    "commonjs": "0.0.1",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.4",
@@ -30,7 +31,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development webpack",
     "prod": "NODE_ENV=production webpack",
-    "start": "NODE_ENV=development webpack-dev-server --output-public-path=/assets/js/ --content-base app/"
+    "start": "webpack-dev-server --output-public-path=/assets/js/ --content-base app/"
   },
   "author": "",
   "license": "ISC",
