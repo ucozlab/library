@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-4"><img class="img-responsive" ng-src="{{audio.image}}" alt="{{audio.title}}"></div>
+	<div class="col-md-8">
+		<h1>{{audio.title}}</h1>
+		<hr>
+		<p><strong>Price:</strong> {{audio.price}}</p>
+		<p><strong>Available:</strong> <span ng-class="{'text-success': audio.isAvailable, 'text-danger': !audio.isAvailable}">{{audio.isAvailable}}</span></p>
+		<p><strong>Average rating:</strong> {{allRating}}</p>
+		<p><strong>Ordered:</strong> <span>{{audio.ordered.length}}</span></p>
+		<p><button class="btn btn-primary btn-lg btn-success" ng-click="order()">Order audio</button></p>
+		<div ng-bind-html="ServerResponse"></div>
+		<!--<div>{{shipAdress}}</div>-->
+	</div>
+</div>
+<hr>
+<p>{{audio.description}}</p>
+<hr>
+<reviews></reviews>

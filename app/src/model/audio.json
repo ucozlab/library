@@ -1,0 +1,28 @@
+[
+  {
+    "id": 0,
+    "title": "Empire of the Sun",
+    "author": "J. G. Ballard",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/51bDdAkWnPL._SX324_BO1,204,203,200_.jpg",
+    "description": "The classic, heartrending story of a British boy’s four year ordeal in a Japanese prison camp during the Second World War. Newly reissued with an introduction by John Lanchester.Based on J. G. Ballard’s own childhood, this is the extraordinary account of a boy’s life in Japanese-occupied wartime Shanghai – a mesmerising, hypnotically compelling novel of war, of starvation and survival, of internment camps and death marches. It blends searing honesty with an almost hallucinatory vision of a world thrown utterly out of joint.",
+    "price": 8.99,
+    "pageCount": 352,
+    "isAvailable": true,
+    "rating": 20,
+    "ordered": ["rustavi 27","illina 11","nevskogo 5"],
+    "reviews": [
+      {
+        "stars": 5,
+        "body": "I love this book!",
+        "author": "joe@example.org",
+        "createdOn": 1397490980837
+      },
+      {
+        "stars": 1,
+        "body": "This book sucks.",
+        "author": "tim@example.org",
+        "createdOn": 1397490980837
+      }
+    ]
+  }
+]

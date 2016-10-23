@@ -23,7 +23,7 @@
 <!-- Comments -->
 <ul class="list-unstyled">
 	<h3>Reviews</h3>
-	<li ng-repeat="review in $ctrl.siteModule.reviews | orderBy:'createdOn':true">
+	<li ng-repeat="review in $parent[moduleName].reviews | orderBy:'createdOn':true">
 		<blockquote>
 			<strong>{{review.stars}} Stars</strong>
 			{{review.body}}

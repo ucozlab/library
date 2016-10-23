@@ -4,7 +4,7 @@
 'use strict';
 
 import * as angular from "angular";
-import { getLocalStorage, buyBookInLocalStorage, addNewComment } from '../model/localstorage';
+import { getLocalStorage, buyNewItem, addNewComment } from '../model/localstorage';
 
 let libraryApp = angular.module('libraryApp');
 
@@ -43,6 +43,9 @@ libraryApp
 				if( config.url.indexOf("/postreview") > -1) { //Intercept POST comment & send it to Localstorage
 					addNewComment(config.data);
 				}
+				if( config.url.indexOf("/order") > -1) { //Intercept POST comment & send it to Localstorage
+					buyNewItem(config.data);
+				}
 
 				return config;
 			},
@@ -50,17 +53,16 @@ libraryApp
 
 				if( response.config.url === 'src/model/books.json' && response.config.method === "GET" ) {
 					//Intercept GET data & send it from Localstorage
-					response.data = getLocalStorage();
+					response.data = getLocalStorage('book');
+				}
+				if( response.config.url === 'src/model/audio.json' && response.config.method === "GET" ) {
+					//Intercept GET data & send it from Localstorage
+					response.data = getLocalStorage('audio');
 				}
 
 				return response;
 			},
 			'responseError': function(rejection) {
-
-				if (rejection.config.url === 'src/model/books.json' && rejection.config.method === "POST") {
-					buyBookInLocalStorage(rejection.config.data);
-				}
-
 				return rejection;
 			}
 		};

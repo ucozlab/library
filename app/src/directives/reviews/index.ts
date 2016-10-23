@@ -6,9 +6,7 @@
 	app.directive('reviews',function ($http) {
 		return {
 			restrict: 'E',
-			scope: {
-				siteModule: '='
-			},
+			scope: true,
 			bindToController: true,
 			controllerAs: '$ctrl',
 			controller: function ($scope,$timeout,tooltip) {
@@ -16,22 +14,19 @@
 				var $ctrl = this;
 
 				$scope.review = {};
-
 				$scope.addReview = function(reviewForm){
 
 					this.review.createdOn = Date.now();
-
-					let pageId = $ctrl.siteModule.id,
-						moduleName = $ctrl.siteModule.moduleName,
+					let pageId = $scope.id,
+						moduleName = $scope.moduleName,
 						data = {
 							moduleName: moduleName,
 							pageId : pageId,
 							review : this.review
 						};
-
 					$http.post(`/${moduleName}/${pageId}/postreview`, data).then(
 						() => {
-							$ctrl.siteModule.reviews.push(this.review);
+							$scope[moduleName].reviews.push(this.review);
 							$scope.review = {};
 							reviewForm.$setPristine();
 							$scope.ServerResponse = tooltip.success();
