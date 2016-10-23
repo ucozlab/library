@@ -1,6 +1,6 @@
 <div class="col-md-4" ng-repeat="audio in audiolist | filter:searchText">
 	<h3>{{audio.title | limitTo: 20}}</h3>
 	<div><p><img ng-src="{{audio.image}}" alt="" style="width:100px;height: 150px;"></p></div>
-	<p><strong>Price:</strong> {{audio.price}}</p>
+	<p><strong>Price:</strong> {{audio.price | currency}}</p>
 	<p><a class="btn btn-default" href="#/audio/{{$index}}" role="button">View details »</a></p>
 </div>

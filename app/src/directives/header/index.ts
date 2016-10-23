@@ -1,3 +1,4 @@
+import * as angular from "angular";
 (function() {
 	var libraryApp = angular.module('pageHeader',[]);
 	libraryApp.directive('pageHeader',function () {

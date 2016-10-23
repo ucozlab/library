@@ -4,7 +4,7 @@
 		<h1>{{book.title}}</h1>
 		<hr>
 		<p><strong>Author:</strong> {{book.author}}</p>
-		<p><strong>Price:</strong> {{book.price}}</p>
+		<p><strong>Price:</strong> {{book.price | currency}}</p>
 		<p><strong>Pages count:</strong> {{book.pageCount}}</p>
 		<p><strong>Available:</strong> <span ng-class="{'text-success': book.isAvailable, 'text-danger': !book.isAvailable}">{{book.isAvailable}}</span></p>
 		<p><strong>Average rating:</strong> {{allRating}}</p>

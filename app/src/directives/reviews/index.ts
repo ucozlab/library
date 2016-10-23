@@ -1,6 +1,7 @@
 /**
  * @param {{some_unres_var:string}} data
  */
+import * as angular from "angular";
 (function() {
 	var app = angular.module('reviews',[]);
 	app.directive('reviews',function ($http) {

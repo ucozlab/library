@@ -2,7 +2,7 @@
 	<h3>{{book.title | limitTo: 20}}</h3>
 	<div><p><img ng-src="{{book.image}}" alt="" style="width:100px;height: 150px;"></p></div>
 	<p><strong>Author:</strong> {{book.author}}</p>
-	<p><strong>Price:</strong> {{book.price}}</p>
+	<p><strong>Price:</strong> {{book.price | currency}}</p>
 	<p>Desctiption: {{book.description | limitTo: 100}}</p>
 	<p><a class="btn btn-default" href="#/book/{{$index}}" role="button">View details »</a></p>
 </div>

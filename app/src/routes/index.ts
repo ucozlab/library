@@ -13,7 +13,8 @@ var libraryApp = angular.module('libraryApp', [
 	'pageFooter',
 	'pageHeader',
 	'reviews',
-	'ngAnimate'
+	'ngAnimate',
+	'addNew'
 ]);
 
 libraryApp.config(function($routeProvider,$httpProvider) {
@@ -23,6 +24,7 @@ libraryApp.config(function($routeProvider,$httpProvider) {
 			templateUrl: 'src/templates/main.html',
 			controller: 'booksList'
 		})
+		.when('/add', { template: '<add-new></add-new>' })
 		.when('/books', {
 			templateUrl: 'src/templates/books-list.html',
 			controller: 'booksList'

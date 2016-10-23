@@ -3,7 +3,7 @@
 	<div class="col-md-8">
 		<h1>{{audio.title}}</h1>
 		<hr>
-		<p><strong>Price:</strong> {{audio.price}}</p>
+		<p><strong>Price:</strong> {{audio.price | currency}}</p>
 		<p><strong>Available:</strong> <span ng-class="{'text-success': audio.isAvailable, 'text-danger': !audio.isAvailable}">{{audio.isAvailable}}</span></p>
 		<p><strong>Average rating:</strong> {{allRating}}</p>
 		<p><strong>Ordered:</strong> <span>{{audio.ordered.length}}</span></p>

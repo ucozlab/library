@@ -1,0 +1,58 @@
+<h1>New Page Add</h1>
+<hr>
+<form name="addForm" ng-submit="addnew(addForm)">
+	<div class="row">
+		<div class="form-group clearfix">
+			<div class="col-md-4"><label for="add_module">Module:</label></div>
+			<div class="col-md-8">
+				<select name="module" class="form-control" id="add_module" ng-model="module">
+					<option value="{{key}}" ng-repeat="(key,data) in storage">{{key}}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group clearfix">
+			<div class="col-md-4"><label for="add_title">Title:</label></div>
+			<div class="col-md-8"><input class="form-control" type="text" id="add_title" name="title" ng-model="new.title"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group clearfix">
+			<div class="col-md-4"><label for="add_title">Image:</label></div>
+			<div class="col-md-8"><input class="form-control" type="text" id="add_image" name="image" ng-model="new.image"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group clearfix">
+			<div class="col-md-4"><label for="add_title">Price:</label></div>
+			<div class="col-md-8"><input class="form-control" type="text" id="add_price" name="price" ng-model="new.price"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group clearfix">
+			<div class="col-md-4"><label for="add_title">Available:</label></div>
+			<div class="col-md-8"><input class="form-control" type="text" id="add_available" name="available" ng-model="new.available"></div>
+		</div>
+	</div>
+	<div class="row" ng-if="module === 'book'">
+		<div class="form-group clearfix">
+			<div class="col-md-4"><label for="add_page_count">Page count:</label></div>
+			<div class="col-md-8"><input class="form-control" type="text" id="add_page_count" name="page_count" ng-model="new.page_count"></div>
+		</div>
+	</div>
+	<div class="row" ng-if="module === 'book'">
+		<div class="form-group clearfix">
+			<div class="col-md-4"><label for="add_author">Author:</label></div>
+			<div class="col-md-8"><input class="form-control" type="text" id="add_author" name="author" ng-model="new.author"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group clearfix">
+			<div class="col-md-4"></div>
+			<div class="col-md-8"><button class="btn btn-success" type="submit">Submit</button></div>
+		</div>
+	</div>
+</form>
+<hr>
+
